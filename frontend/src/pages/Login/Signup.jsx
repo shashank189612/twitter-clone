@@ -7,10 +7,10 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import GoogleButton from "react-google-button";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Login from "./Login";
 import "./Login.css";
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -46,7 +46,7 @@ const Signup = () => {
       name: name,
       email: email,
     };
-    axios.post("http://localhost:6000/register", user);
+    axios.post("http://localhost:5000/register", user);
   };
 
   const handleGoogleSignIn = () => {

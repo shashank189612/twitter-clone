@@ -5,21 +5,19 @@ const cors = require("cors");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
 const app = express();
-const port = 5000;
+const port = process.env;
 
 app.use(cors());
 app.use(express.json());
-// ${process.env.DB_USER}   ${process.env.DB_PASSWORD}
 
-// const dbUser = process.env.DB_USER;
-// const dbPassword = process.env.DB_PASSWORD;
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
 
-// Use the variables in your MongoDB URI
-// const uri = `mongodb+srv://${dbUser}:${dbPassword}@twitterclone.h0smflz.mongodb.net/?retryWrites=true&w=majority`;
+console.log(dbUser);
+console.log(dbPassword);
 
-const uri = `mongodb+srv://shashanknm18:tA3GixJ8JTDH1sUI@twitterclone.h0smflz.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${dbUser}:${dbPassword}@twitterclone.h0smflz.mongodb.net/?retryWrites=true&w=majority`;
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUNifiedTopology: true,
